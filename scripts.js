@@ -3,30 +3,25 @@ const getComputerChoice= ()=>{
     return computer[Math.floor(Math.random()*3)];
 }
 
-const playRound = (playerSelection, computerSelection)=>{
+const playRound = (playerSelection, computerSelection) => {
     playerSelection = playerSelection.toLowerCase();
-    if(playerSelection == "paper" && computerSelection =="rock"){
-        return "You Won! Paper beats Rock";
+    
+    if (playerSelection === "paper" && computerSelection === "rock") {
+        return "You selected Paper, Computer selected Rock. You Won! Paper beats Rock";
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        return "You selected Paper, Computer selected Scissors. You Lose! Scissors beats Paper";
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        return "You selected Scissors, Computer selected Rock. You Lose! Rock beats Scissors";
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return "You selected Scissors, Computer selected Paper. You Won! Scissors beats Paper";
+    } else if (playerSelection === "rock" && computerSelection === "paper") {
+        return "You selected Rock, Computer selected Paper. You Lose! Paper beats Rock";
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        return "You selected Rock, Computer selected Scissors. You Won! Rock beats Scissors";
+    } else {
+        return `You and computer selected ${playerSelection}. Tie, Playing round again`;
     }
-    else if(playerSelection == "paper" && computerSelection =="scissors"){
-        return "You Lose! Scissor beats Paper";
-    }
-    else if(playerSelection == "scissors" && computerSelection =="rock"){
-        return "You Lose! Rock beats Scissor";
-    }
-    else if(playerSelection == "scissors" && computerSelection =="paper"){
-        return "You Won! Scissors beats Paper";
-    }
-    else if(playerSelection == "rock" && computerSelection =="paper"){
-        return "You Lose! Paper beats Rock";
-    }
-    else if(playerSelection == "rock" && computerSelection =="scissors"){
-        return "You Won! Rock beats Scissors";
-    }
-    else{
-        return "Tie, Playing round again";
-    }
-}
+};
 
 let playerScore = 0;
 let computerScore = 0;
