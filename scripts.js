@@ -11,48 +11,70 @@ const playRound = (playerSelection, computerSelection)=>{
     else if(playerSelection == "paper" && computerSelection =="scissors"){
         return "You Lose! Scissor beats Paper";
     }
-    else if(playerSelection == "scissor" && computerSelection =="rock"){
+    else if(playerSelection == "scissors" && computerSelection =="rock"){
         return "You Lose! Rock beats Scissor";
     }
-    else if(playerSelection == "scissor" && computerSelection =="paper"){
+    else if(playerSelection == "scissors" && computerSelection =="paper"){
         return "You Won! Scissors beats Paper";
     }
     else if(playerSelection == "rock" && computerSelection =="paper"){
         return "You Lose! Paper beats Rock";
     }
-    else if(playerSelection == "rock" && computerSelection =="scissor"){
+    else if(playerSelection == "rock" && computerSelection =="scissors"){
         return "You Won! Rock beats Scissors";
     }
     else{
         return "Tie, Playing round again";
     }
 }
-const game =()=>{
-    let playerScore = 0;
-    let computerScore = 0;
-    for(let i =0; i<5; i++){
-        let playerSelection = prompt("Enter rock/paper/scissor");
-        let result = playRound(playerSelection, getComputerChoice());
-        console.log("Round "+(i+1)+ ": " +result);
-        
+
+let playerScore = 0;
+let computerScore = 0;
+let result;
+const body = document.querySelector("body");
+const roundresult = document.createElement("p");
+body.appendChild(roundresult);
+
+const score = document.createElement("p");
+body.appendChild(score);
+score.innerText = `Player : ${playerScore} Computer : ${computerScore}`;
+
+const gameResult = document.createElement("p");
+body.appendChild(gameResult);
+body.addEventListener("click",(event)=>{
+    console.log(event);
+    console.log(event.target.innerText);
+    if(event.target.nodeName == "BUTTON"){
+        gameResult.innerText = "";
+        switch(event.target.innerText){
+            case "Rock":
+                result = playRound("rock",getComputerChoice());
+                break;
+            case "Paper":
+                result = playRound("paper",getComputerChoice());
+                break;
+            case "Scissors":
+                result = playRound("scissors",getComputerChoice());
+                break;    
+        }
+        roundresult.textContent = result;
         if(result[4] == "L"){
             computerScore++;
         }
         else if(result[4] == "W"){
             playerScore++;
         }
-        else{
-            i--;
+        score.innerText = `Player : ${playerScore} Computer : ${computerScore}`;
+        if(computerScore == 5){
+            gameResult.innerText = "Computer Won";
+            computerScore = 0;
+            playerScore = 0;
         }
-        console.log("Computer Score : " + computerScore);
-        console.log("Player Score : " + playerScore);
-        
+        else if(playerScore == 5){
+            gameResult.innerText = "Player Won";
+            computerScore = 0;
+            playerScore = 0;
+    
+        }
     }
-    if(computerScore > playerScore){
-        console.log("Computer Won");
-    }
-    else{
-        console.log("Player Won");
-    }
-}
-game();
+})
