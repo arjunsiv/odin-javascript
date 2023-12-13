@@ -3,10 +3,38 @@
     <head>
         <meta charset="UTF-8">
         <script src="./scripts.js"  defer></script>
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: rgb(243, 252, 166);
+            }
+            div {
+                border: 2px solid;
+                border-color: rgb(148, 148, 133);
+                border-radius: 20px;
+                background-color: yellow;
+                padding: 50px;
+                display: flex;
+                gap : 20px;
+                transform: scale(2);
+            }
+
+            .fontsize{
+                font-size: 40px;
+                margin-top: 80px;
+            }
+        </style>
     </head>
     <body>
-        <button>Rock</button>
-        <button>Paper</button>
-        <button>Scissors</button>
+        <div>        
+            <button>Rock</button>
+            <button>Paper</button>
+            <button>Scissors</button>
+        </div>
+
     </body>
 </html>
