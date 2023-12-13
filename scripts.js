@@ -41,6 +41,9 @@ score.innerText = `Player : ${playerScore} Computer : ${computerScore}`;
 
 const gameResult = document.createElement("p");
 body.appendChild(gameResult);
+roundresult.classList.add("fontsize");
+gameResult.classList.add("fontsize");
+score.classList.add("fontsize");
 body.addEventListener("click",(event)=>{
     console.log(event);
     console.log(event.target.innerText);
